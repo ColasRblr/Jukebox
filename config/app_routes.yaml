@@ -10,7 +10,6 @@ favorite:
   path: "/favorite"
   controller: App\Controller\FavoriteController::index
 
-  user :
+user:
   path: "/user"
   controller: App\Controller\UserController::index
-
