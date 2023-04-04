@@ -13,3 +13,4 @@ favorite:
   user :
   path: "/user"
   controller: App\Controller\UserController::index
+

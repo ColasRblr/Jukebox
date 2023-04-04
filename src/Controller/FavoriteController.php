@@ -13,13 +13,13 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/favorite')]
 class FavoriteController extends AbstractController
 {
-    #[Route('/', name: 'app_favorite_index', methods: ['GET'])]
-    public function index(FavoriteRepository $favoriteRepository): Response
-    {
-        return $this->render('favorite/index.html.twig', [
-            'favorites' => $favoriteRepository->findAll(),
-        ]);
-    }
+    // #[Route('/', name: 'app_favorite_index', methods: ['GET'])]
+    // public function index(FavoriteRepository $favoriteRepository): Response
+    // {
+    //     return $this->render('favorite/index.html.twig', [
+    //         'favorites' => $favoriteRepository->findAll(),
+    //     ]);
+    // }
 
     #[Route('/new', name: 'app_favorite_new', methods: ['GET', 'POST'])]
     public function new(Request $request, FavoriteRepository $favoriteRepository): Response
@@ -74,5 +74,22 @@ class FavoriteController extends AbstractController
         }
 
         return $this->redirectToRoute('app_favorite_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    public function getSong(int $id)
+    {
+        $favoriteRepository = $this->getDoctrine()->getRepository(Favorite::class);
+        $favorite = $favoriteRepository->find($id);
+
+        if (!$favorite) {
+            throw $this->createNotFoundException('Favorite not found');
+        }
+        $songRepository = $this->getDoctrine()->getRepository(Song::class);
+        $song = $songRepository->findOneBy(['id' => $favorite->getSongId()]);
+        if (!$song) {
+            throw $this->createNotFoundException('Song not found');
+        }
+
+        // Do something with $song
     }
 }

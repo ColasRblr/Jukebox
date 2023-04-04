@@ -75,4 +75,6 @@ class SongController extends AbstractController
 
         return $this->redirectToRoute('app_song_index', [], Response::HTTP_SEE_OTHER);
     }
+    // pour récupérer id de song dans favorite
+    // puis pour récupérer chanson :
 }
