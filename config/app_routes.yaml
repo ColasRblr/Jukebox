@@ -1,0 +1,4 @@
+song:
+  path: /song
+
+  controller: App\Controller\SongController::index
