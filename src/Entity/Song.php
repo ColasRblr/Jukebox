@@ -27,11 +27,11 @@ class Song
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Admin $admin_id = null;
+    private ?Admin $admin= null;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Category $category_id = null;
+    private ?Category $category = null;
 
     public function getId(): ?int
     {
@@ -88,24 +88,24 @@ class Song
 
     public function getAdminId(): ?Admin
     {
-        return $this->admin_id;
+        return $this->admin;
     }
 
-    public function setAdminId(?Admin $admin_id): self
+    public function setAdminId(?Admin $admin): self
     {
-        $this->admin_id = $admin_id;
+        $this->admin = $admin;
 
         return $this;
     }
 
     public function getCategoryId(): ?Category
     {
-        return $this->category_id;
+        return $this->category;
     }
 
-    public function setCategoryId(?Category $category_id): self
+    public function setCategoryId(?Category $category): self
     {
-        $this->category_id = $category_id;
+        $this->category = $category;
 
         return $this;
     }
