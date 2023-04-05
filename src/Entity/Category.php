@@ -18,7 +18,10 @@ class Category
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Admin $admin_id = null;
+    private ?Admin $admin= null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $image = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
@@ -42,12 +45,24 @@ class Category
 
     public function getAdminId(): ?Admin
     {
-        return $this->admin_id;
+        return $this->admin;
     }
 
-    public function setAdminId(?Admin $admin_id): self
+    public function setAdminId(?Admin $admin): self
     {
-        $this->admin_id = $admin_id;
+        $this->admin = $admin;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }
