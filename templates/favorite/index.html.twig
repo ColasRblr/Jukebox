@@ -3,13 +3,14 @@
 {% block title %}Favorite index{% endblock %}
 
 {% block body %}
-    <h1>Favorite index</h1>
+
+    <h3>Ma playlist</h3>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>actions</th>
+                <th>Artiste</th>
+                <th>Titre</th>
             </tr>
         </thead>
         <tbody>
@@ -17,8 +18,8 @@
             <tr>
                 <td>{{ favorite.id }}</td>
                 <td>
-                    <a href="{{ path('app_favorite_show', {'id': favorite.id}) }}">show</a>
-                    <a href="{{ path('app_favorite_edit', {'id': favorite.id}) }}">edit</a>
+                  <h4>  <a href="{{ path('app_favorite_show', {'id': favorite.id}) }}">show</a></h4>
+                  <h5>  <a href="{{ path('app_favorite_edit', {'id': favorite.id}) }}">edit</a></h5>
                 </td>
             </tr>
         {% else %}
@@ -26,8 +27,8 @@
                 <td colspan="2">no records found</td>
             </tr>
         {% endfor %}
+
         </tbody>
     </table>
 
-    <a href="{{ path('app_favorite_new') }}">Create new</a>
 {% endblock %}
