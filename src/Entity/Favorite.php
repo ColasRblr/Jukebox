@@ -15,11 +15,11 @@ class Favorite
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?User $user_id = null;
+    private ?User $user = null;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Song $song_id = null;
+    private ?Song $song = null;
 
     public function getId(): ?int
     {
@@ -28,24 +28,24 @@ class Favorite
 
     public function getUserId(): ?User
     {
-        return $this->user_id;
+        return $this->user;
     }
 
-    public function setUserId(?User $user_id): self
+    public function setUserId(?User $user): self
     {
-        $this->user_id = $user_id;
+        $this->user = $user;
 
         return $this;
     }
 
     public function getSongId(): ?Song
     {
-        return $this->song_id;
+        return $this->song;
     }
 
-    public function setSongId(?Song $song_id): self
+    public function setSongId(?Song $song): self
     {
-        $this->song_id = $song_id;
+        $this->song = $song;
 
         return $this;
     }
