@@ -7,25 +7,32 @@
     <h3>Ma playlist</h3>
 
     <table class="table">
-        <thead>
+        {# <thead>
             <tr>
                 <th>Artiste</th>
                 <th>Titre</th>
             </tr>
-        </thead>
+        </thead> #}
         <tbody>
         {% for favorite in favorites %}
             <tr>
-                <td>{{ favorite.id }}</td>
                 <td>
-                  <h4>  <a href="{{ path('app_favorite_show', {'id': favorite.id}) }}">show</a></h4>
-                  <h5>  <a href="{{ path('app_favorite_edit', {'id': favorite.id}) }}">edit</a></h5>
+                  <h4><a href="{{ path('app_favorite_index', {'id': favorite.id}) }}">Artiste</a></h4>
                 </td>
+                <td>
+                    <h5><a href="{{ path('app_favorite_index', {'id': favorite.id}) }}">Titre</i></a></h5>
+                </td>
+                {# <td>
+                   <a href="{{ path('app_favorite_edit', {'id': favorite.id}) }}"><i class="bi bi-play-fill"></i></a>
+                </td>
+                <td>
+                    <a href="{{ path('app_favorite_delete', {'id': favorite.id}) }}"><i class="bi bi-trash-fill"></i></a>
+                </td> #}
             </tr>
         {% else %}
-            <tr>
+            {# <tr>
                 <td colspan="2">no records found</td>
-            </tr>
+            </tr> #}
         {% endfor %}
 
         </tbody>

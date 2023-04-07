@@ -39,28 +39,60 @@ class FavoriteRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Favorite[] Returns an array of Favorite objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('f')
-//            ->andWhere('f.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('f.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
 
-//    public function findOneBySomeField($value): ?Favorite
-//    {
-//        return $this->createQueryBuilder('f')
-//            ->andWhere('f.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    // public function findFavoriteSongTitle()
+    // {
+    //     $entityManager = $this->getEntityManager();
+
+    //     $db = $entityManager->createQueryBuilder(
+    //         'SELECT song.title
+    //     FROM favorite
+    //     JOIN user ON favorite.user_id = user.id
+    //     JOIN song ON favorite.song_id = song.id'
+    //     );
+
+    //     $query = $db->getQuery();
+
+    //     $results = $query->getResult();
+    //     // var_dump($results);
+    //     // die;
+    //     return $results->execute();
+    // }
+
+
+    // public function getTitleOfSong()
+    // {
+    //     $entityManager = $this->getDoctrine()->getManager();
+    //     $dql = "SELECT s.title FROM App\Entity\Song s JOIN s.favorites f WHERE f.user = :userId";
+    //     $query = $entityManager->createQuery($dql);
+    //     $query->setParameter('userId', 1);
+    //     $results = $query->getResult();
+
+    //     return $this->json($results);
+    // }
+
+    //    /**
+    //     * @return Favorite[] Returns an array of Favorite objects
+    //     */
+    //    public function findByExampleField($value): array
+    //    {
+    //        return $this->createQueryBuilder('f')
+    //            ->andWhere('f.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->orderBy('f.id', 'ASC')
+    //            ->setMaxResults(10)
+    //            ->getQuery()
+    //            ->getResult()
+    //        ;
+    //    }
+
+    //    public function findOneBySomeField($value): ?Favorite
+    //    {
+    //        return $this->createQueryBuilder('f')
+    //            ->andWhere('f.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
 }

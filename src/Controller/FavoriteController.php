@@ -76,20 +76,5 @@ class FavoriteController extends AbstractController
         return $this->redirectToRoute('app_favorite_index', [], Response::HTTP_SEE_OTHER);
     }
 
-    // public function getSong(int $id)
-    // {
-    //     $favoriteRepository = $this->getDoctrine()->getRepository(Favorite::class);
-    //     $favorite = $favoriteRepository->find($id);
-
-    //     if (!$favorite) {
-    //         throw $this->createNotFoundException('Favorite not found');
-    //     }
-    //     $songRepository = $this->getDoctrine()->getRepository(Song::class);
-    //     $song = $songRepository->findOneBy(['id' => $favorite->getSongId()]);
-    //     if (!$song) {
-    //         throw $this->createNotFoundException('Song not found');
-    //     }
-
-    //     // Do something with $song
-    // }
+    // #[Route('/{id}', name: 'app_favorite_showTitle', methods: ['POST'])]
 }
