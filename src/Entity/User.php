@@ -18,22 +18,52 @@ class User
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Person $person_id = null;
+     private ?Person $person = null;
 
-    public function getId(): ?int
+     public function getId(): ?int
     {
         return $this->id;
-    }
+     }
 
-    public function getPersonId(): ?Person
-    {
-        return $this->person_id;
-    }
+     public function getPersonId(): ?Person
+     {
+         return $this->person;
+     }
 
-    public function setPersonId(Person $person_id): self
+    public function setPersonId(Person $person): self
     {
-        $this->person_id = $person_id;
+        $this->person = $person;
 
         return $this;
+     }
+     public function getFirstname()
+     {
+         if (isset($this->person)) {
+            return $this->person->getFirstname();        }
+         return null;
+     }
+     public function getLastname()
+     {
+         if (isset($this->person)) {
+             return $this->person->getLastname();
+         }
+         return null;
+     }
+
+     public function getEmail()
+     {
+        if (isset($this->person)) {
+             return $this->person->getEmail();
+         }
+         return null;
+     }
+     public function getPassword()
+    {
+         if (isset($this->person)) {
+             return $this->person->getFirstname();         }
+         return null;
     }
-}
+ }
+
+
+

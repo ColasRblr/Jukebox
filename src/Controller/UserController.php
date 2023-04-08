@@ -15,13 +15,24 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends AbstractController
 {
 
-    #[Route('/', name: 'app_user_index', methods: ['GET'])]
+    #[Route('/user', name: 'app_user_index', methods: ['GET'])]
     public function index(UserRepository $userRepository): Response
     {
+
+        // $user = new User();
+        // $form = $this->createForm(UserType::class, $user);
+
         return $this->render('user/index.html.twig', [
             'users' => $userRepository->findAll(),
+            // 'user' =>$form->createView()
+
         ]);
     }
 
+        
+     
+    
 
 }
+
+

@@ -1,5 +1,6 @@
 controllers:
 
+
     resource:
         path: ../src/Controller/
         namespace: App\Controller
@@ -8,4 +9,5 @@ controllers:
 
 imports:
   resource: app_routes.yaml
+
 
