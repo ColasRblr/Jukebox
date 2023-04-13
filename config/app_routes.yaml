@@ -18,3 +18,9 @@ get_songs_by_category:
   path: "/get-songs-by-category"
   controller: App\Controller\SongController::getSongsByCategory
   methods: ["POST"]
+
+player:
+  path: /player/{id}
+  controller: App\Controller\PlayerController::showSong
+  requirements:
+    id: \d+

@@ -26,6 +26,7 @@ var swiper = new Swiper(".swiper-container", {
 slideChange.call(swiper);
 
 // Définition de la fonction slideChange
+
 function slideChange() {
   // Récupérer l'ID de la catégorie de la nouvelle slide
   var category_id = this.slides[this.activeIndex].getAttribute("data-id"); // Envoyer l'ID de la catégorie au contrôleur Symfony via AJAX
@@ -41,36 +42,14 @@ function slideChange() {
       songList.innerHTML = "";
       response.forEach(function (song) {
         var li = document.createElement("li");
-        li.innerHTML =
-          "<div>" +
-          song.path_song +
-          "</div><h4>" +
-          song.artist +
-          "</h4><h5>" +
-          song.title +
-          "</h5>";
+        var a = document.createElement("a");
+        a.setAttribute("href", "/player/" + song.id);
+        // Ajouter l'URL en tant que data-url
+        a.innerHTML = "<h4>" + song.artist + "</h4><h5>" + song.title + "</h5>";
+        li.appendChild(a);
         songList.appendChild(li);
       });
     }
   };
   xhr.send("category_id=" + category_id);
 }
-
-$(document).ready(function () {
-  $("#jquery_jplayer_1").jPlayer({
-    ready: function () {
-      $(this).jPlayer("setMedia", {
-        mp3: "http://example.com/mysong.mp3",
-      });
-    },
-    swfPath: "https://cdnjs.cloudflare.com/ajax/libs/jplayer/2.9.2/",
-    supplied: "mp3",
-    wmode: "window",
-    useStateClassSkin: true,
-    autoBlur: false,
-    smoothPlayBar: true,
-    keyEnabled: true,
-    remainingDuration: true,
-    toggleDuration: true,
-  });
-});
