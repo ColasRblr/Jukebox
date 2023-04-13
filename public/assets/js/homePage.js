@@ -38,6 +38,7 @@ function slideChange() {
       var response = this.response;
       // Mettre à jour la liste de chansons avec les nouvelles chansons
       var songList = document.querySelector("#song-list");
+      console.log("coucou");
       songList.innerHTML = "";
       response.forEach(function (song) {
         var li = document.createElement("li");

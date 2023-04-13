@@ -3,13 +3,13 @@
 {% block title %}Hello HomeController!
 {% endblock %}
 
-
+{# 
 {% block javascripts %}
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jplayer/2.9.2/jquery.jplayer.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 	<script src="{{ asset('assets/js/homePage.js') }}"></script>
-{% endblock %}
+{% endblock %} #}
 
 {% block body %}
 
@@ -40,30 +40,13 @@
 						<a href="javascript:;" class="jp-stop" tabindex="1">stop</a>
 					</li>
 				</ul>
-				<div class="jp-progress">
-					<div class="jp-seek-bar">
-						<div class="jp-play-bar"></div>
-					</div>
-				</div>
-				<div class="jp-volume-controls">
-					<div class="jp-volume-bar">
-						<div class="jp-volume-bar-value"></div>
-					</div>
-					<ul class="jp-toggles">
-						<li>
-							<a href="javascript:;" class="jp-mute" tabindex="1">mute</a>
-						</li>
-						<li>
-							<a href="javascript:;" class="jp-unmute" tabindex="1">unmute</a>
-						</li>
-					</ul>
-				</div>
+
 			</div>
-			<div class="jp-no-solution">
-				<span>Update Required</span>
-				To play the media you will need to either update your browser to a recent version or update your
-				<a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
-			</div>
+			{# <div class="jp-no-solution">
+										<span>Update Required</span>
+										To play the media you will need to either update your browser to a recent version or update your
+										<a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+									</div> #}
 		</div>
 	</div>
 
