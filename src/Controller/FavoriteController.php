@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Favorite;
+use App\Entity\Song;
 use App\Form\FavoriteType;
 use App\Repository\FavoriteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,8 +17,11 @@ class FavoriteController extends AbstractController
     #[Route('/', name: 'app_favorite_index', methods: ['GET'])]
     public function index(FavoriteRepository $favoriteRepository): Response
     {
+        $favorites = $favoriteRepository->findByFavoriteUserId(1);
+        // ATTENTION A CHANGER CONDITION DE LA METHODE QUAND LA CONNEXION SERA CREER
+
         return $this->render('favorite/index.html.twig', [
-            'favorites' => $favoriteRepository->findAll(),
+            'favorites' => $favorites,
         ]);
     }
 
@@ -77,4 +81,5 @@ class FavoriteController extends AbstractController
     }
 
     // #[Route('/{id}', name: 'app_favorite_showTitle', methods: ['POST'])]
+
 }
