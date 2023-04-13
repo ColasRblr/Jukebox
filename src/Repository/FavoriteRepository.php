@@ -39,37 +39,29 @@ class FavoriteRepository extends ServiceEntityRepository
         }
     }
 
+    public function findByFavoriteUserId($user)
+    {
+        $qb = $this->createQueryBuilder('f')
+            ->select('f.id, s.artist, s.title')
+            ->join('f.user', 'u')
+            ->join('f.song', 's')
+            ->WHERE('f.user = :user')
+            ->setParameter('user', $user)
+            ->getQuery();
 
-    // public function findFavoriteSongTitle()
-    // {
-    //     $entityManager = $this->getEntityManager();
+        return $qb->getResult();
+    }
 
-    //     $db = $entityManager->createQueryBuilder(
-    //         'SELECT song.title
-    //     FROM favorite
-    //     JOIN user ON favorite.user_id = user.id
-    //     JOIN song ON favorite.song_id = song.id'
-    //     );
+    public function findByFavoriteId($user)
+    {
+        $qb = $this->createQueryBuilder('f')
+            ->select('id')
+            ->WHERE('f.user = :user')
+            ->setParameter('user', $user)
+            ->getQuery();
 
-    //     $query = $db->getQuery();
-
-    //     $results = $query->getResult();
-    //     // var_dump($results);
-    //     // die;
-    //     return $results->execute();
-    // }
-
-
-    // public function getTitleOfSong()
-    // {
-    //     $entityManager = $this->getDoctrine()->getManager();
-    //     $dql = "SELECT s.title FROM App\Entity\Song s JOIN s.favorites f WHERE f.user = :userId";
-    //     $query = $entityManager->createQuery($dql);
-    //     $query->setParameter('userId', 1);
-    //     $results = $query->getResult();
-
-    //     return $this->json($results);
-    // }
+        return $qb->getResult();
+    }
 
     //    /**
     //     * @return Favorite[] Returns an array of Favorite objects

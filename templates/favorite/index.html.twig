@@ -1,41 +1,64 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Favorite index{% endblock %}
+{% block title %}Favorite index
+{% endblock %}
 
 {% block body %}
 
-    <h3>Ma playlist</h3>
+	<h3>Ma playlist</h3>
 
-    <table class="table">
-        {# <thead>
-            <tr>
-                <th>Artiste</th>
-                <th>Titre</th>
-            </tr>
-        </thead> #}
-        <tbody>
-        {% for favorite in favorites %}
-            <tr>
-                <td>
-                  <h4><a href="{{ path('app_favorite_index', {'id': favorite.id}) }}">Artiste</a></h4>
-                </td>
-                <td>
-                    <h5><a href="{{ path('app_favorite_index', {'id': favorite.id}) }}">Titre</i></a></h5>
-                </td>
-                {# <td>
-                   <a href="{{ path('app_favorite_edit', {'id': favorite.id}) }}"><i class="bi bi-play-fill"></i></a>
-                </td>
-                <td>
-                    <a href="{{ path('app_favorite_delete', {'id': favorite.id}) }}"><i class="bi bi-trash-fill"></i></a>
-                </td> #}
-            </tr>
-        {% else %}
-            {# <tr>
-                <td colspan="2">no records found</td>
-            </tr> #}
-        {% endfor %}
+	<table class="table">
 
-        </tbody>
-    </table>
-
-{% endblock %}
+		<tbody>
+			{% for favorite in favorites %}
+				<tr>
+					<td>
+						<h4>{{favorite.artist}}</h4>
+					</td>
+					<td>
+						<h5>{{favorite.title}}</h5>
+					</td>
+					<td>
+						<i class="bi bi-play-fill"></i>
+					</td>
+					<td>
+						<form method="post" action="{{ path('app_favorite_delete', {'id': favorite.id}) }}" onsubmit="return confirm('Etes-vous sur de vouloir retirer cette musique de vos favoris ?');">
+							<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ favorite.id) }}">
+							<button class="btn">
+								<i class="bi bi-trash-fill"></i>
+							</button>
+						</form>
+					</td>
+				</tr>
+			</tbody>
+		</tbody>
+	</td>
+{% else %}
+	<tr>
+		<td colspan="2">no records found</td>
+	</tr>
+{% endfor %}</table><nav class="navbar navbar-dark fixed-bottom">
+<div class="container-fluid">
+	<button id="btnNavBarFavorite" class="navbar-toggler bottom-0 end-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+		<div class="offcanvas-header">
+			<h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Menu</h5>
+			<button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+		</div>
+		<div class="offcanvas-body">
+			<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+				<li class="nav-item">
+					<a class="nav-link active" aria-current="page" href="#">Acceuil</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Profil</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link active" aria-current="page" href="#">Déconnexion</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>{% endblock %}
