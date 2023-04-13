@@ -87,6 +87,7 @@ class SongController extends AbstractController
         $response = [];
         foreach ($songs as $song) {
             $response[] = [
+                'id' => $song->getId(),
                 'title' => $song->getTitle(),
                 'artist' => $song->getArtist(),
                 'duration' => $song->getDuration(),
@@ -98,5 +99,22 @@ class SongController extends AbstractController
         $jsonResponse = new JsonResponse($response);
 
         return $jsonResponse;
+    }
+
+
+    public function showSongById(SongRepository $songRepository, $id)
+    {
+        $song = $songRepository->find($id);
+
+        // Créer un tableau associatif avec les données de la chanson
+        $songData = [
+            'title' => $song->getTitle(),
+            'artist' => $song->getArtist(),
+            'duration' => $song->getDuration(),
+            'path_song' => $song->getPathSong(),
+        ];
+
+        // Retourner les données de la chanson au format JSON
+        return $this->json($songData);
     }
 }
