@@ -2,37 +2,69 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
-use App\Form\UserType;
-use App\Repository\UserRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
-#[Route('/user')]
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class UserController extends AbstractController
 {
-
-    #[Route('/user', name: 'app_user_index', methods: ['GET'])]
-    public function index(UserRepository $userRepository): Response
+    #[Route('/user', name: 'app_user')]
+    public function index(): Response
     {
+        $form = $this->createFormBuilder()
+                    ->add('Nom',TextType::class,[
+                        "attr"=>[
+                            "placeholder"=>"Votre nom",
+                            "class"=>"forme-group"
+                        ],
+                            
+                    ])
+                    ->add('Prenom', TextType::class,[
+                        "attr"=>[
+                             
+                            "placeholder"=>"Votre prenom",
+                            "class"=>"forme-group"
+                            ]
+                    ])
+                    ->add('Adresse_mail', EmailType::class,[
+                        "attr"=>[
+                             
+                            "placeholder"=>"Votre adresse mail",
+                            "class"=>"forme-group"
 
-        // $user = new User();
-        // $form = $this->createForm(UserType::class, $user);
+                            ]
+                           
+                    ])
+                    ->add('Mot_de_passe', PasswordType::class,[
+                        "attr"=>[
+                            "placeholder"=>"Votre mot de passe",
+                            "class"=>"forme-group"
+                        ]
 
+                    ])
+                    ->add('Valider', SubmitType::class,[
+                        'attr' => [
+                            'class' => 'forme-group'
+                        ]
+                    ])
+                        
+
+                    ->add('Annuler', SubmitType::class,[
+                        'attr' => [
+                            'class' => 'forme-group'
+                        ]
+                    ])
+
+                    ->getForm()
+        ;
         return $this->render('user/index.html.twig', [
-            'users' => $userRepository->findAll(),
-            // 'user' =>$form->createView()
-
+            'controller_name' => 'UserController',
+            'inscription' =>$form->createView()
         ]);
     }
-
-        
-     
     
-
 }
-
-
