@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -13,58 +16,61 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class UserController extends AbstractController
 {
     #[Route('/user', name: 'app_user')]
-    public function index(): Response
+    public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createFormBuilder()
-                    ->add('Nom',TextType::class,[
-                        "attr"=>[
-                            "placeholder"=>"Votre nom",
-                            "class"=>"forme-group"
-                        ],
-                            
-                    ])
-                    ->add('Prenom', TextType::class,[
-                        "attr"=>[
-                             
-                            "placeholder"=>"Votre prenom",
-                            "class"=>"forme-group"
-                            ]
-                    ])
-                    ->add('Adresse_mail', EmailType::class,[
-                        "attr"=>[
-                             
-                            "placeholder"=>"Votre adresse mail",
-                            "class"=>"forme-group"
+        $user = new User();
 
-                            ]
-                           
-                    ])
-                    ->add('Mot_de_passe', PasswordType::class,[
-                        "attr"=>[
-                            "placeholder"=>"Votre mot de passe",
-                            "class"=>"forme-group"
-                        ]
+        $form = $this->createFormBuilder($user)
+            ->add('firstname', TextType::class, [
+                'attr' => [
+                    'placeholder' => 'Votre nom',
+                    'class' => 'form-group'
+                ],
+            ])
+            ->add('lastname', TextType::class, [
+                'attr' => [
+                    'placeholder' => 'Votre prenom',
+                    'class' => 'form-group'
+                ]
+            ])
+            ->add('email', EmailType::class, [
+                'attr' => [
+                    'placeholder' => 'Votre adresse mail',
+                    'class' => 'form-group'
+                ]
+            ])
+            ->add('password', PasswordType::class, [
+                'attr' => [
+                    'placeholder' => 'Votre mot de passe',
+                    'class' => 'form-group'
+                ]
+            ])
+            ->add('Valider', SubmitType::class, [
+                'attr' => [
+                    'class' => 'form-group'
+                ]
+            ])
+            ->add('Annuler', SubmitType::class, [
+                'attr' => [
+                    'class' => 'form-group'
+                ]
+            ])
+            ->getForm();
 
-                    ])
-                    ->add('Valider', SubmitType::class,[
-                        'attr' => [
-                            'class' => 'forme-group'
-                        ]
-                    ])
-                        
+        $form->handleRequest($request);
 
-                    ->add('Annuler', SubmitType::class,[
-                        'attr' => [
-                            'class' => 'forme-group'
-                        ]
-                    ])
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user = $form->getData();
+            $entityManager->persist($user);
+            $entityManager->flush();
 
-                    ->getForm()
-        ;
+            return $this->redirectToRoute('app_home');
+        }
+
         return $this->render('user/index.html.twig', [
             'controller_name' => 'UserController',
-            'inscription' =>$form->createView()
+            'inscription' => $form->createView()
         ]);
     }
-    
+
 }

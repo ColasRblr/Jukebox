@@ -5,37 +5,27 @@
 {% block body %}
 
 
-
-
-<div id="disque-container">
-    <div id="lecteur-container">
-      <img src="{{ asset('img/headshell.png') }}" alt="Image lecteur">
-    </div>
-    <div id="containerh2">
-         <img src="{{ asset('img/disc.png') }}" alt="Disque vinyle"> 
-      <h2>INSCRIPTION</h2>
-   
-  <div class="burger-menu">
-    <input type="checkbox" id="burger-toggle">
-    <label for="burger-toggle"><span></span><span></span><span></span></label>
-    <ul>
-      <li><a href="#">Inscription</a></li>
-      <li><a href="#">Connexion</a></li>
-    </ul>
-  </div>
-</div>
-</div>
-
-    <div class="form-container">
-        {{ form(inscription) }}
+        <d id="disque-container">
+          <div id="lecteur-container">
+            <img src="{{ asset('img/headshell.png') }}" alt="Image lecteur">
+          </div>
+          <div id="containerh2">
+               <img src="{{ asset('img/disc.png') }}" alt="Disque vinyle"> 
+            <h2>INSCRIPTION</h2>
+         
+        <div class="Burger">
+          <input type="checkbox" id="Toggle">
+          <label for="Toggle"><span></span><span></span><span></span></label>
+          <ul>
+            <li><a href="#">Inscription</a></li>
+            <li><a href="#">Connexion</a></li>
+          </ul>
+        </div>
       </div>
-      
-  
-      
-  
-  
-
-       
+      </d
+          <div class="form-container">
+              {{ form(inscription) }}
+            </div>
 
 
 

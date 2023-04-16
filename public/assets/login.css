@@ -8,43 +8,47 @@ button {
   margin-top: 20px;
 }
 
-#form_Annuler {
-  float: right;
-  width: 40%;
-  height: 40px;
-  margin-left: 10%;
-  border: none;
-  border-radius: 15px;
-  background-color: black;
-  color: #fff;
-  font-size: 16px;
-  font-weight: bold;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-}
 #form_Valider {
-  float: left;
-  width: 45%;
+  width: 8rem;
   height: 40px;
-  margin-right: 5%;
   border: none;
   border-radius: 15px;
   background-color: black;
   color: #fff;
   font-size: 16px;
   font-weight: bold;
-  text-align: center;
   text-decoration: none;
   cursor: pointer;
+  display: block;
+  position: relative;
+  left: -1rem;
 }
+
+
+#form_Annuler {
+  width: 8rem;
+  height: 40px;
+  border: none;
+  border-radius: 15px;
+  background-color: black;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  display: block;
+  position: relative;
+  top: -5rem;
+  right: -169px;
+}
+
 
 #disque-container {
   position: relative;
 }
 #lecteur-container {
   position: absolute;
-  top: 152px;
+  top: 100px;
   right: 0;
   margin: 0 auto;
  
@@ -75,7 +79,7 @@ h2 {
   display: flex;
   justify-content: center;
   position: relative;
-  top: -50px;
+  top: -20px;
 }
 
 #lecteur-container{
@@ -113,28 +117,28 @@ form {
   top: calc(25vh - 5vh - 25px);
   
 }
-
-.burger-menu {
+ 
+ .Burger {
   position: relative;
-  display: flex;
-  top: 600px;
-  left: 60px;
+    display: flex;
+    top: 600px;
+    left: 150px;
 }
 
-.burger-menu input[type="checkbox"] {
+.Burger input[type="checkbox"] {
   position: absolute;
   top: -9999px;
   left: -9999px;
 }
 
-.burger-menu label {
+.Burger label {
   cursor: pointer;
   display: block;
   position: relative;
   z-index: 1;
 }
 
-.burger-menu span {
+.Burger span {
   background: #000;
   display: block;
   height: 3px;
@@ -145,32 +149,32 @@ form {
   width: 25px;
 }
 
-.burger-menu span:first-child {
+.Burger span:first-child {
   transform: translateY(-8px);
 }
 
-.burger-menu span:last-child {
+.Burger span:last-child {
   transform: translateY(8px);
 }
 
-.burger-menu input[type="checkbox"]:checked ~ label span:first-child {
+.Burger input[type="checkbox"]:checked ~ label span:first-child {
   transform: translateY(0) rotate(45deg);
 }
 
-.burger-menu input[type="checkbox"]:checked ~ label span:last-child {
+.Burger input[type="checkbox"]:checked ~ label span:last-child {
   transform: translateY(0) rotate(-45deg);
 }
 
-.burger-menu input[type="checkbox"]:checked ~ label span:nth-child(2) {
+.Burger input[type="checkbox"]:checked ~ label span:nth-child(2) {
   opacity: 0;
 }
   
-.burger-menu input[type="checkbox"]:checked ~ ul {
+.Burger input[type="checkbox"]:checked ~ ul {
   opacity: 1;
   visibility: visible;
 }
 
-.burger-menu ul {
+.Burger ul {
   background: #000;
   border: 1px solid #000;
   display: inline-block;
@@ -183,22 +187,19 @@ form {
   z-index: 2;
 }
 
-.burger-menu ul li {
+.Burger ul li {
   display: block;
   padding: 10px;
   text-align: center;
 }
 
-.burger-menu ul li a {
+.Burger ul li a {
   color: #fff;
   display: block;
   font-size: 20px;
   text-align: start;
   
 }
-
-
-
 
 
 
