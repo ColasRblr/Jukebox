@@ -4,13 +4,6 @@
 {% endblock %}
 
 
-{% block javascripts %}
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jplayer/2.9.2/jquery.jplayer.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-	<script src="{{ asset('assets/js/homePage.js') }}"></script>
-{% endblock %}
-
 {% block body %}
 
 	<div class="swiper-container" data-mydata="{{ myData|json_encode|raw }}">
