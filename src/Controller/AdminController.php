@@ -15,25 +15,5 @@ class AdminController extends PersonController
     //         'controller_name' => 'AdminController',
     //     ]);
     // }
-    public function deleteCategory(){
 
-    }
-
-    public function deleteSong(){
-
-    }
-    public function modifyCategory(){
-
-    }
-
-    public function modifySong(){
-
-    }
-    public function addCategory(){
-
-    }
-    
-    public function addSong(){
-
-    }
 }
