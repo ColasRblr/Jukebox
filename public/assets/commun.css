@@ -1,6 +1,9 @@
 body {
   margin: 0;
   background-image: url(/img/wood-mobile-bg.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 header {
@@ -12,13 +15,13 @@ header {
   width: 200px;
 }
 
-footer {
+/* footer {
   background-color: black;
   width: 100vw;
   height: 10vh;
   position: fixed;
   bottom: 0;
-}
+} */
 
 h1 {
   font-family: Asap;

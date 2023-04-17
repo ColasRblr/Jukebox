@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Person;
-use App\Form\Person1Type;
+use App\Form\PersonType;
 use App\Repository\PersonRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,7 +25,7 @@ class PersonController extends AbstractController
     public function new(Request $request, PersonRepository $personRepository): Response
     {
         $person = new Person();
-        $form = $this->createForm(Person1Type::class, $person);
+        $form = $this->createForm(PersonType::class, $person);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -51,7 +51,7 @@ class PersonController extends AbstractController
     #[Route('/{id}/edit', name: 'app_person_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Person $person, PersonRepository $personRepository): Response
     {
-        $form = $this->createForm(Person1Type::class, $person);
+        $form = $this->createForm(PersonType::class, $person);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -69,7 +69,7 @@ class PersonController extends AbstractController
     #[Route('/{id}', name: 'app_person_delete', methods: ['POST'])]
     public function delete(Request $request, Person $person, PersonRepository $personRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$person->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $person->getId(), $request->request->get('_token'))) {
             $personRepository->remove($person, true);
         }
 

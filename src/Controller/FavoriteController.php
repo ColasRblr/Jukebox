@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Favorite;
+use App\Entity\Song;
 use App\Form\FavoriteType;
 use App\Repository\FavoriteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,8 +17,11 @@ class FavoriteController extends AbstractController
     #[Route('/', name: 'app_favorite_index', methods: ['GET'])]
     public function index(FavoriteRepository $favoriteRepository): Response
     {
+        $favorites = $favoriteRepository->findByFavoriteUserId(1);
+        // ATTENTION A CHANGER CONDITION DE LA METHODE QUAND LA CONNEXION SERA CREER
+
         return $this->render('favorite/index.html.twig', [
-            'favorites' => $favoriteRepository->findAll(),
+            'favorites' => $favorites,
         ]);
     }
 
@@ -76,20 +80,6 @@ class FavoriteController extends AbstractController
         return $this->redirectToRoute('app_favorite_index', [], Response::HTTP_SEE_OTHER);
     }
 
-    // public function getSong(int $id)
-    // {
-    //     $favoriteRepository = $this->getDoctrine()->getRepository(Favorite::class);
-    //     $favorite = $favoriteRepository->find($id);
+    // #[Route('/{id}', name: 'app_favorite_showTitle', methods: ['POST'])]
 
-    //     if (!$favorite) {
-    //         throw $this->createNotFoundException('Favorite not found');
-    //     }
-    //     $songRepository = $this->getDoctrine()->getRepository(Song::class);
-    //     $song = $songRepository->findOneBy(['id' => $favorite->getSongId()]);
-    //     if (!$song) {
-    //         throw $this->createNotFoundException('Song not found');
-    //     }
-
-    //     // Do something with $song
-    // }
 }
