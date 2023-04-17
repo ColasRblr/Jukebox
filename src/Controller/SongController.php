@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 #[Route('/song')]
 class SongController extends AbstractController
@@ -75,6 +76,45 @@ class SongController extends AbstractController
 
         return $this->redirectToRoute('app_song_index', [], Response::HTTP_SEE_OTHER);
     }
-    // pour récupérer id de song dans favorite
-    // puis pour récupérer chanson :
+
+    #[Route('/', name: 'get_songs_by_category', methods: ['POST'])]
+    public function getSongsByCategory(SongRepository $songRepository, Request $request): JsonResponse
+    {
+        $category_id = $request->request->get('category_id');
+
+        // Récupérer les chansons correspondant à la catégorie sélectionnée
+        $songs = $songRepository->findBy(['category' => $category_id]);
+        $response = [];
+        foreach ($songs as $song) {
+            $response[] = [
+                'id' => $song->getId(),
+                'title' => $song->getTitle(),
+                'artist' => $song->getArtist(),
+                'duration' => $song->getDuration(),
+                'path_song' => $song->getPathSong(),
+                // Autres données à renvoyer...
+            ];
+        }
+        // Convertir le tableau $response en chaîne de caractères JSON
+        $jsonResponse = new JsonResponse($response);
+
+        return $jsonResponse;
+    }
+
+
+    public function showSongById(SongRepository $songRepository, $id)
+    {
+        $song = $songRepository->find($id);
+
+        // Créer un tableau associatif avec les données de la chanson
+        $songData = [
+            'title' => $song->getTitle(),
+            'artist' => $song->getArtist(),
+            'duration' => $song->getDuration(),
+            'path_song' => $song->getPathSong(),
+        ];
+
+        // Retourner les données de la chanson au format JSON
+        return $this->json($songData);
+    }
 }

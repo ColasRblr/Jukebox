@@ -1,20 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Hello HomeController!
+{% endblock %}
+
+
+{% block javascripts %}
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jplayer/2.9.2/jquery.jplayer.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+	<script src="{{ asset('assets/js/homePage.js') }}"></script>
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+	<div class="swiper-container" data-mydata="{{ myData|json_encode|raw }}">
+		<div class="swiper-wrapper">
+			{% for data in myData %}
+				<div class="swiper-slide" data-id="{{ data.categoryId }}">
+					<img src="{{ asset('/img/categories/' ~ data.categoryPath) }}" alt="{{ data.categoryAlt }}" width="500px">
+					<h1>{{ data.categoryName }}</h1>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <a href="{{path('song')}}">src/Controller/HomeController.php</a></li>
-        <li>Your template at <a href="{{ path('category')}}">templates/home/index.html.twig</a></li>
-    </ul>
-</div>
+	<ul id="song-list"></ul>
+
+
 {% endblock %}
