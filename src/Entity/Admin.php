@@ -1,14 +1,23 @@
 <?php
+
 namespace App\Entity;
 
 use App\Repository\AdminRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+
 #[ORM\Entity(repositoryClass: AdminRepository::class)]
 #[ORM\Table(name: '`admin`')]
-class Admin 
-// extends Person
+
+/**
+ * @ORM\Entity
+ */
+
+
+class Admin
+extends Person
 {
+    
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -30,7 +39,7 @@ class Admin
 
     public function setPersonId(Person $person): self
     {
-        $this->person= $person;
+        $this->person = $person;
 
         return $this;
     }

@@ -20,18 +20,29 @@ public function handleLoginRequest(Request $request, EntityManagerInterface $ent
     {
         $form = $this->createFormBuilder()
             
-            ->add('Adresse_mail', EmailType::class, [
-                'attr' => [
-                    'placeholder' => 'Votre adresse mail',
-                    'class' => 'form-group',
-                ],
-            ])
-            ->add('Mot_de_passe', PasswordType::class, [
-                'attr' => [
-                    'placeholder' => 'Votre mot de passe',
-                    'class' => 'form-group',
-                ],
-            ])
+        
+        ->add('email', EmailType::class,[
+            "label" =>"Adresse mail : ",
+            "attr" =>[
+                "placeholder" =>"Entrez votre email",
+                "class" => "form-group email-input",
+                "row_attr" => "form-group"
+            ],
+            "row_attr" => [
+                "class" => "form-group"
+            ]
+        ])
+
+        ->add('password', PasswordType::class ,[
+            "label" =>"Mot de passe: ",
+            "attr" =>[
+                "placeholder" =>"Entrez votre mot de passe",
+                "class" => "form-group password-input"
+            ],
+            "row_attr" => [
+                "class" => "form-group"
+            ]
+        ])
             ->add('valider', SubmitType::class, [
                 'attr' => [
                     'class' => 'form-group',
@@ -46,6 +57,12 @@ public function handleLoginRequest(Request $request, EntityManagerInterface $ent
                 $user = new User();
                 $user->setEmail($form->get('email')->getData());
                 $user->setPassword($form->get('password')->getData());
+
+                //  dd($user);
+            //     echo $user->getFirstname();
+            //  echo $user->getLastname();
+            // echo $user->getEmail();
+
     
                 $entityManager->persist($user);
                 $entityManager->flush();

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,28 +22,58 @@ class UserController extends AbstractController
         $user = new User();
 
         $form = $this->createFormBuilder($user)
+
             ->add('firstname', TextType::class, [
                 'attr' => [
                     'placeholder' => 'Votre nom',
                     'class' => 'form-group'
                 ],
             ])
-            ->add('lastname', TextType::class, [
-                'attr' => [
-                    'placeholder' => 'Votre prenom',
-                    'class' => 'form-group'
+
+            ->add('lastname', TextType::class,[
+                "label" =>"Nom : ",
+                "attr" =>[
+                    "placeholder" =>"Entrez votre nom",
+                    "class" => "form-group firstName-input",
+                    "row_attr" => "form-group"
+                ],
+                "row_attr" => [
+                    "class" => "form-group"
                 ]
             ])
-            ->add('email', EmailType::class, [
-                'attr' => [
-                    'placeholder' => 'Votre adresse mail',
-                    'class' => 'form-group'
+
+            ->add('firstname', TextType::class,[
+                "label" =>"Prénom : ",
+                "attr" =>[
+                    "placeholder" =>"Entrez votre nom",
+                    "class" => "form-group firstName-input",
+                    "row_attr" => "form-group"
+                ],
+                "row_attr" => [
+                    "class" => "form-group"
                 ]
             ])
-            ->add('password', PasswordType::class, [
-                'attr' => [
-                    'placeholder' => 'Votre mot de passe',
-                    'class' => 'form-group'
+
+            ->add('Email', EmailType::class,[
+                "label" =>"Adresse mail : ",
+                "attr" =>[
+                    "placeholder" =>"Entrez votre email",
+                    "class" => "form-group email-input",
+                    "row_attr" => "form-group"
+                ],
+                "row_attr" => [
+                    "class" => "form-group"
+                ]
+            ])
+
+            ->add('password', PasswordType::class ,[
+                "label" =>"Mot de passe: ",
+                "attr" =>[
+                    "placeholder" =>"Entrez votre mot de passe",
+                    "class" => "form-group password-input"
+                ],
+                "row_attr" => [
+                    "class" => "form-group"
                 ]
             ])
             ->add('Valider', SubmitType::class, [
@@ -50,6 +81,7 @@ class UserController extends AbstractController
                     'class' => 'form-group'
                 ]
             ])
+
             ->add('Annuler', SubmitType::class, [
                 'attr' => [
                     'class' => 'form-group'
@@ -61,6 +93,8 @@ class UserController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $user = $form->getData();
+            //   dd($user);
+            
             $entityManager->persist($user);
             $entityManager->flush();
 
