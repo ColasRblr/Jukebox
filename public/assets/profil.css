@@ -19,3 +19,14 @@
 .navbar {
   background-color: none;
 }
+
+.formProfilInformations {
+  background-color: white;
+  border-radius: 20px;
+  padding: 5px;
+  /* font-size: 30px; */
+  width: 50vw;
+}
+#containerProfil {
+  margin-left: 25vw;
+}
