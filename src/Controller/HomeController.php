@@ -18,7 +18,6 @@ class HomeController extends AbstractController
         // Récupération de toutes les catégories de la table
         $categories = $categoryRepository->findAll();
 
-
         // Construction de la liste d'objets à partir des données récupérées
         $myData = [];
         foreach ($categories as $category) {

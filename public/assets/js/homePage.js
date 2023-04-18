@@ -6,14 +6,15 @@
 var swiper = new Swiper(".swiper-container", {
   effect: "coverflow",
   grabCursor: true,
-  centeredSlides: true,
+  // width: "100%",
   slidesPerView: 2,
+  spaceBetween: 5,
+  centeredSlides: true,
   coverflowEffect: {
     rotate: 50,
     stretch: 0,
     depth: 100,
     modifier: 1,
-    slideShadows: true,
   },
   pagination: {
     el: ".swiper-pagination",
@@ -43,10 +44,11 @@ function slideChange() {
       response.forEach(function (song) {
         var li = document.createElement("li");
         var a = document.createElement("a");
-        a.setAttribute("href", "/player/" + song.id);
+        a.setAttribute("href", "/player/" + song.id + "/" + category_id);
         // Ajouter l'URL en tant que data-url
         a.innerHTML = "<h4>" + song.artist + "</h4><h5>" + song.title + "</h5>";
         li.appendChild(a);
+        li.setAttribute("data-category-id", category_id);
         songList.appendChild(li);
       });
     }

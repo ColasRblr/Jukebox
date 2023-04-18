@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello Player!
+{% endblock %}
+
+{% block body %}
+	<section id="playerSection">
+
+		<a id="previous-page-btn" href="/app_home">
+			<i class="bi bi-arrow-left"></i>
+		</a>
+
+
+		<div id="animDisc">
+			<img src="{{ asset('img/disc.png') }}" alt="Disc" id="disc">
+			<img src="{{ asset('img/headshell.png') }}" alt="Headshell" id="headshell">
+		</div>
+
+
+		<p id="song-title">{{ song.title }}
+		</p>
+		<p id="song-artist">
+			{{ song.artist }}
+		</p>
+		<div class="player-wrapper">
+			<button id="previous-song-btn">
+				<i class="bi bi-arrow-left-circle-fill"></i>
+			</button>
+			<audio id="my-player" controls>
+				<source src="{{ song.path_song }}">
+			</audio>
+			<button id="next-song-btn">
+				<i class="bi bi-arrow-right-circle-fill"></i>
+			</button>
+
+		</div>
+	</section>
+
+
+{% endblock %}

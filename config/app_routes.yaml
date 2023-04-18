@@ -1,3 +1,7 @@
+home:
+  path: "/app_home"
+  controller: App\Controller\HomeController::index
+
 category:
   path: "/category"
   controller: App\Controller\CategoryController::index
@@ -24,7 +28,8 @@ get_songs_by_category:
   methods: ["POST"]
 
 player:
-  path: /player/{id}
+  path: /player/{id}/{category_id}
   controller: App\Controller\PlayerController::showSong
   requirements:
     id: \d+
+    category_id: \d+

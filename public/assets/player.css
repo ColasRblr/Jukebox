@@ -1,0 +1,61 @@
+#playerSection {
+display: flex;
+flex-direction: column;
+}
+
+.player-wrapper {
+    display: flex;
+    
+  }
+  
+#previous-song-btn, #next-song-btn{
+    background: none;
+    color: black;
+    font-size: 25px;
+    
+}
+
+#previous-page-btn{
+    color:black;
+    font-size: 40px;
+    font-weight: 900;
+}
+
+#animDisc {
+    display: flex;
+    justify-content: center;
+    
+}
+
+#headshell {
+    transform: rotate(7deg);
+    position: absolute;
+    top: 12%;
+    left : 67%;
+}
+
+#disc {
+    position: relative;
+    width: 80%;
+}
+
+.rotate {
+    animation: rotate-disc 2s linear infinite;
+
+}
+  @keyframes rotate-disc {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+
+  @media screen and (min-width:640px){
+    #disc {
+        width: 50%;
+    }
+    
+  }
