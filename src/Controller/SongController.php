@@ -78,6 +78,7 @@ class SongController extends AbstractController
     }
 
     #[Route('/', name: 'get_songs_by_category', methods: ['POST'])]
+
     public function getSongsByCategory(SongRepository $songRepository, Request $request): JsonResponse
     {
         $category_id = $request->request->get('category_id');
