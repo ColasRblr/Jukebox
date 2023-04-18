@@ -1,5 +1,5 @@
 {{ form_start(form) }}
-<div id="profilContainer">
+<div id="containerProfil">
 	<div class="form-group">
 		{{ form_label(form.firstname) }}
 		{{ form_widget(form.firstname, {'attr': {'class': 'form-control'}}) }}
@@ -17,5 +17,7 @@
 		{{ form_widget(form.password, {'attr': {'class': 'form-control', 'type': 'password', 'id': 'form_password'}}) }}
 	</div>
 </div>
-{# <button class="btn">{{ button_label|default('Save') }}</button> #}
+<div id="btnValidateEditProfil">
+	<button class="button">{{ button_label|default('Save') }}</button>
+</div>
 {{ form_end(form) }}
