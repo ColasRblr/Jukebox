@@ -15,13 +15,38 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends AbstractController
 {
 
-    // #[Route('/', name: 'app_user_index', methods: ['GET'])]
-    // public function index(): Response
+    #[Route('/', name: 'app_user_index', methods: ['GET'])]
+    public function index(UserRepository $userRepository): Response
+    {
+        return $this->render('user/index.html.twig', [
+            'users' => $userRepository->findAll(),
+        ]);
+    }
+
+    // #[Route('/', name: 'app_profil_index', methods: ['GET'])]
+    // public function profilIndex(UserRepository $userRepository): Response
     // {
-    //     return $this->render('user/index.html.twig', [
-    //         'users' => $userRepository->findAll(),
+    //     // $user = $userRepository->findByDataUser(1);
+    //     // // // ATTENTION A CHANGER CONDITION DE LA METHODE QUAND LA CONNEXION SERA CREER
+
+    //     // $form = $this->createForm(PersonType::class, $user);
+
+    //     // // Récupérer les données de l'utilisateur
+    //     // $firstname = $user->getFirstname();
+    //     // $lastname = $user->getLastname();
+    //     // $email = $user->getEmail();
+    //     // $password = $user->getPassword();
+
+    //     // // Passer les données de l'utilisateur à l'instance du formulaire
+    //     // $form->setData([
+    //     //     'firstname' => $firstname,
+    //     //     'lastname' => $lastname,
+    //     //     'email' => $email,
+    //     //     'password' => $password,
+    //     // ]);
+
+    //     return $this->render('profil/index.html.twig', [
+    //         //     'form' => $form->createView(),
     //     ]);
     // }
-
-
 }
