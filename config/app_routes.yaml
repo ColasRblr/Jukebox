@@ -14,6 +14,10 @@ user:
   path: "/user"
   controller: App\Controller\UserController::index
 
+person:
+  path: "/person"
+  controller: App\Controller\PersonController::index
+
 get_songs_by_category:
   path: "/get-songs-by-category"
   controller: App\Controller\SongController::getSongsByCategory

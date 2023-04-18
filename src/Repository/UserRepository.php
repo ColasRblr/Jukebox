@@ -42,9 +42,9 @@ class UserRepository extends ServiceEntityRepository
     public function findByDataUser($user)
     {
         $qb = $this->createQueryBuilder('u')
-            ->select('*')
+            ->select('u')
             ->join('u.person', 'p')
-            ->WHERE('u.person = :user')
+            ->where('u.person = :user')
             ->setParameter('user', $user)
             ->getQuery();
 

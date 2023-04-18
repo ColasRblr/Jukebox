@@ -1,41 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Person index{% endblock %}
+{% block title %}Person index
+{% endblock %}
 
 {% block body %}
-    <h1>Person index</h1>
+	<div id="containerh2">
+		<h2>Mon profil</h2>
+	</div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Email</th>
-                <th>Password</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for person in people %}
-            <tr>
-                <td>{{ person.id }}</td>
-                <td>{{ person.firstname }}</td>
-                <td>{{ person.lastname }}</td>
-                <td>{{ person.email }}</td>
-                <td>{{ person.password }}</td>
-                <td>
-                    <a href="{{ path('app_person_show', {'id': person.id}) }}">show</a>
-                    <a href="{{ path('app_person_edit', {'id': person.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+	<div id="containerProfil">
+		{% for person in people %}
+			<div class="elementsProfil">
+				<label>Nom</label>
+				<p class="formProfilInformations">{{ person.firstname }}</p>
+			</div>
+			<div class="elementsProfil">
+				<label>Prénom</label>
+				<p class=" formProfilInformations">{{ person.lastname }}</p>
+			</div>
+			<div class="elementsProfil">
+				<label>Email</label>
+				<p class="formProfilInformations">{{ person.email }}</p>
+			</div>
+		</div>
+		<div id="">
+			<a href="{{ path('app_person_edit', {'id': person.id}) }}">Modifier</a>
+		</div>
 
-    <a href="{{ path('app_person_new') }}">Create new</a>
+	{% else %}
+		<tr>
+			<td colspan="6">no records found</td>
+		</tr>
+	{% endfor %}
 {% endblock %}
