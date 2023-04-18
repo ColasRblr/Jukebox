@@ -1,3 +1,7 @@
+home:
+  path: "/app_home"
+  controller: App\Controller\HomeController::index
+
 category:
   path: "/category"
   controller: App\Controller\CategoryController::index
