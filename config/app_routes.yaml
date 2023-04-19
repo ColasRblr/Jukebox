@@ -22,6 +22,10 @@ person:
   path: "/person"
   controller: App\Controller\PersonController::index
 
+security:
+  path: "/security"
+  controller: App\Controller\PersonController::loginUser
+
 get_songs_by_category:
   path: "/get-songs-by-category"
   controller: App\Controller\SongController::getSongsByCategory
