@@ -20,6 +20,9 @@ class User
     #[ORM\JoinColumn(nullable: false)]
     private ?Person $person = null;
 
+    #[ORM\Column]
+    private ?bool $isUser = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -33,6 +36,18 @@ class User
     public function setPersonId(Person $person): self
     {
         $this->person = $person;
+
+        return $this;
+    }
+
+    public function isIsUser(): ?bool
+    {
+        return $this->isUser;
+    }
+
+    public function setIsUser(bool $isUser): self
+    {
+        $this->isUser = $isUser;
 
         return $this;
     }

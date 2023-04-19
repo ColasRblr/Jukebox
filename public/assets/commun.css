@@ -8,7 +8,6 @@ body {
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-
 }
 
 header {
@@ -20,13 +19,13 @@ header {
   width: 200px;
 }
 
-footer {
+/* footer {
   background-color: black;
   width: 100vw;
   height: 10vh;
   position: fixed;
   bottom: 0;
-}
+} */
 
 h1 {
   font-family: Asap;
@@ -72,7 +71,6 @@ h5 {
   font-weight: bold;
   font-family: Asap;
   margin: 1em;
-
 }
 h6 {
   font-family: Asap;
