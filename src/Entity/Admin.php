@@ -18,6 +18,9 @@ class Admin
     #[ORM\JoinColumn(nullable: false)]
     private ?Person $person = null;
 
+    #[ORM\Column]
+    private ?bool $isAdmin = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -31,6 +34,18 @@ class Admin
     public function setPersonId(Person $person): self
     {
         $this->person= $person;
+
+        return $this;
+    }
+
+    public function isIsAdmin(): ?bool
+    {
+        return $this->isAdmin;
+    }
+
+    public function setIsAdmin(bool $isAdmin): self
+    {
+        $this->isAdmin = $isAdmin;
 
         return $this;
     }

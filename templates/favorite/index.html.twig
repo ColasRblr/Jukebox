@@ -4,8 +4,8 @@
 {% endblock %}
 
 {% block body %}
-<div id="containerFavorite">
-	<h3>Ma playlist</h3>
+<div id="containerh2">
+	<h2>Ma playlist</h2>
 </div>
 
 <table class="table">
@@ -26,13 +26,11 @@
 					<form method="post" action="{{ path('app_favorite_delete', {'id': favorite.id}) }}" onsubmit="return confirm('Etes-vous sur de vouloir retirer cette musique de vos favoris ?');">
 						<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ favorite.id) }}">
 						<button class="btn">
-							<a href="{{ path('player') }}">
-								<iclass="bibi-trash-fill"></a>
-							</i>
+							<i class="bi bi-trash-fill"></i>
 						</button>
-					</td>
+					</form>
 				</td>
 			</tr>
-		</form>
+		</tbody>
 	</tbody>
-</td></tr></tbody></tbody></td>{% endfor %}</div></table>{% endblock %}
+</td>{% endfor %}</div></table>{% endblock %}
