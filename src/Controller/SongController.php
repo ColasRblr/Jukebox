@@ -23,10 +23,14 @@ class SongController extends AbstractController
     }
 
     #[Route('/new', name: 'app_song_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, SongRepository $songRepository): Response
+    public function addSong(Request $request, SongRepository $songRepository): Response
     {
+        // Créer une nouvelle instance de l'entité Song
         $song = new Song();
+        // Créer le formulaire avec le type de formulaire correspondant à l'entité Song
         $form = $this->createForm(SongType::class, $song);
+
+        // Traiter la soumission du formulaire
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -41,6 +45,7 @@ class SongController extends AbstractController
         ]);
     }
 
+
     #[Route('/{id}', name: 'app_song_show', methods: ['GET'])]
     public function show(Song $song): Response
     {
@@ -50,12 +55,17 @@ class SongController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_song_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Song $song, SongRepository $songRepository): Response
+
+    public function editSong(Request $request, Song $song, SongRepository $songRepository): Response
     {
+        // Créer le formulaire avec le type de formulaire correspondant à l'entité Song
         $form = $this->createForm(SongType::class, $song);
+
+        // Traiter la soumission du formulaire
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $songRepository->save($song, true);
 
             return $this->redirectToRoute('app_song_index', [], Response::HTTP_SEE_OTHER);
@@ -63,7 +73,7 @@ class SongController extends AbstractController
 
         return $this->renderForm('song/edit.html.twig', [
             'song' => $song,
-            'form' => $form,
+            'form' => $form->createView,
         ]);
     }
 

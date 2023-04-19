@@ -3,18 +3,38 @@
 {% block title %}Hello AdminController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    {# {{ include('song/show.html.twig') }} #}
+    {# {{ include('song/edit.html.twig') }}
+    {{ include('song/new.html.twig') }}
+    {{ include('song/_delete_form.html.twig') }} #}
+    {# {{ include('category/new.html.twig') }}
+    {{ include('category/edit.html.twig') }}
+    {{ include('category/_delete_form.html.twig') }} #}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Applications/MAMP/htdocs/Symfony/Brief9/Jukebox/src/Controller/AdminController.php'|file_link(0) }}">src/Controller/AdminController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Applications/MAMP/htdocs/Symfony/Brief9/Jukebox/templates/admin/index.html.twig'|file_link(0) }}">templates/admin/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <div class="example-wrapper">
+        <div class="admin_title">
+            <h3>Titres les plus likés</h3>
+        </div>
+        <div class="admin_show_liked">
+            <h4>Artiste</h4>
+            <h5>Titre</h5>
+            <i class="fa fa-heart" style="font-size:36px"></i>
+        </div>
+        <div class="admin_category">
+            <h3>CATEGORIES</h3>
+            <a href="{{ path('app_category_new') }}"><i class="fa fa-plus" id="admin_plus_icon" style="font-size:36px"></i></a>
+        </div>
+
+        {{ include('category/show.html.twig') }}
+
+        <div class="admin_burger">
+            <i class="fa fa-navicon" style="font-size:36px"></i>
+        </div>
+    </div>
+
 {% endblock %}

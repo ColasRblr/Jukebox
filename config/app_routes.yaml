@@ -24,3 +24,11 @@ player:
   controller: App\Controller\PlayerController::showSong
   requirements:
     id: \d+
+
+# admin:
+#   path: "/admin"
+#   controller: App\Controller\AdminController::index
+
+form_add_category:
+  path: "/category/new"
+  controller: App\Controller\AdminController::new
