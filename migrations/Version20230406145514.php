@@ -26,7 +26,7 @@ final class Version20230406145514 extends AbstractMigration
         $this->addSql('CREATE INDEX IDX_68C58ED9A0BDB2F3 ON favorite (song_id)');
         $this->addSql('ALTER TABLE user DROP FOREIGN KEY FK_8D93D649D3728193');
         $this->addSql('DROP INDEX UNIQ_8D93D649D3728193 ON user');
-        $this->addSql('ALTER TABLE user CHANGE person_id_id person_id INT NOT NULL');
+        $this->addSql('ALTER TABLE user CHANGE person_id person_id INT NOT NULL');
         $this->addSql('ALTER TABLE user ADD CONSTRAINT FK_8D93D649217BBB47 FOREIGN KEY (person_id) REFERENCES person (id)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_8D93D649217BBB47 ON user (person_id)');
     }
@@ -40,8 +40,8 @@ final class Version20230406145514 extends AbstractMigration
         $this->addSql('DROP INDEX IDX_68C58ED9A0BDB2F3 ON favorite');
         $this->addSql('ALTER TABLE user DROP FOREIGN KEY FK_8D93D649217BBB47');
         $this->addSql('DROP INDEX UNIQ_8D93D649217BBB47 ON user');
-        $this->addSql('ALTER TABLE user CHANGE person_id person_id_id INT NOT NULL');
-        $this->addSql('ALTER TABLE user ADD CONSTRAINT FK_8D93D649D3728193 FOREIGN KEY (person_id_id) REFERENCES person (id)');
-        $this->addSql('CREATE UNIQUE INDEX UNIQ_8D93D649D3728193 ON user (person_id_id)');
+        $this->addSql('ALTER TABLE user CHANGE person_id person_id INT NOT NULL');
+        $this->addSql('ALTER TABLE user ADD CONSTRAINT FK_8D93D649D3728193 FOREIGN KEY (person_id) REFERENCES person (id)');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_8D93D649D3728193 ON user (person_id)');
     }
 }
