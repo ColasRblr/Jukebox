@@ -56,16 +56,14 @@ class PersonRepository extends ServiceEntityRepository
         $this->save($user, true);
     }
 
-    // public function findByPersonId($user)
-    // {
-    //     $qb = $this->createQueryBuilder('p')
-    //         ->select('p.firstname, p.lastname, p.email, p.password')
-    //         ->WHERE('p.user = :user')
-    //         ->setParameter('user', $user)
-    //         ->getQuery();
-
-    //     return $qb->getResult();
-    // }
+    /**
+     * @Route("/admin_panel", name="admin_panel")
+     * @Security("is_granted('ROLE_ADMIN')")
+     */
+    public function adminPanel()
+    {
+        // ...
+    }
 
     //    /**
     //     * @return Person[] Returns an array of Person objects
