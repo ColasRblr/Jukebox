@@ -10,15 +10,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+
 
 #[Route('/favorite')]
 class FavoriteController extends AbstractController
 {
     #[Route('/', name: 'app_favorite_index', methods: ['GET'])]
-    public function index(FavoriteRepository $favoriteRepository): Response
+    public function index(FavoriteRepository $favoriteRepository,  SessionInterface $session): Response
     {
-        $favorites = $favoriteRepository->findByFavoriteUserId(1);
-        // ATTENTION A CHANGER CONDITION DE LA METHODE QUAND LA CONNEXION SERA CREER
+        $userId = $session->get('id');
+        $favorites = $favoriteRepository->findByFavoriteUserId($userId);
 
         return $this->render('favorite/index.html.twig', [
             'favorites' => $favorites,
