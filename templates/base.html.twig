@@ -18,7 +18,11 @@
 
 		{% block stylesheets %}
 			{# {{ encore_entry_link_tags('app') }} #}
+
+       <link href="{{ asset('assets/dashboardHome.css') }}" rel="stylesheet">
+
 			<link rel="stylesheet" href="/path/to/build/mediaelementplayer.min.css"/>
+
 			<link href="{{ asset('assets/commun.css') }}" rel="stylesheet">
 			<link href="{{ asset('assets/profil.css') }}" rel="stylesheet">
 			<link href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" rel="stylesheet"/>
@@ -44,6 +48,7 @@
 
 	{% block javascripts %}
 		{{ encore_entry_script_tags('app') }}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.16/mediaelement-and-player.min.js"></script>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.16/mediaelementplayer.min.css"/>

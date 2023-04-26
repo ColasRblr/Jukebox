@@ -48,6 +48,12 @@ class SongRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+// add a song
+    public function addSong(Song $song): void
+    {
+        $this->_em->persist($song);
+        $this->_em->flush();
+    }
 
     //    /**
     //     * @return Song[] Returns an array of Song objects
