@@ -6,6 +6,8 @@ use App\Entity\Person;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+
 
 class PersonType extends AbstractType
 {
@@ -15,8 +17,7 @@ class PersonType extends AbstractType
             ->add('firstname')
             ->add('lastname')
             ->add('email')
-            ->add('password')
-        ;
+            ->add('password', PasswordType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
